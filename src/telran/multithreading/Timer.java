@@ -18,12 +18,14 @@ public class Timer extends Thread {
 	}
 	
 	public void run() {
-		while(true) {
+		while(!isInterrupted()) {
 			System.out.println(LocalDateTime.now().format(formatter));
 			try {
 				sleep(resolution);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				 System.out.println("Timer is stoped");
+				break;
+			   
 			}
 		}
 	}
